@@ -1,35 +1,65 @@
+# This workflow will build and deploy your Next.js application to Vercel
+# Required secrets:
+#   - VERCEL_TOKEN: Your Vercel deploy token (get from https://vercel.com/account/tokens)
+#   - VERCEL_ORG_ID: Your Vercel organization ID
+#   - VERCEL_PROJECT_ID: Your Vercel project ID
+#
+# To set up:
+# 1. Create a new project on Vercel and link it to your repository
+# 2. Go to your Vercel dashboard → Settings → Tokens and create a new token
+# 3. Go to your GitHub repository → Settings → Secrets and add:
+#    - Name: VERCEL_TOKEN, Value: (your token from step 2)
+#    - Name: VERCEL_ORG_ID, Value: (find in Vercel project settings)
+#    - Name: VERCEL_PROJECT_ID, Value: (find in Vercel project settings)
+
 name: Deploy to Vercel
 
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+      
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
+
+      - name: Cache Next.js build
+        uses: actions/cache@v3
+        with:
+          path: |
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build --if-present
-
-      - name: Vercel Deploy
-        uses: amondnet/vercel-action@v20
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-          vercel-args: '--prod'
-          working-directory: ./
+      - name: Build project
+        run: |
+          npm run build:tailwind
+          npm run build
         env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          CI: true
+
+      - name: Deploy to Vercel
+        run: |
+          npx vercel deploy --token=${{ secrets.VERCEL_TOKEN }} --prod --yes
+        env:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
 
 # To use this workflow:
 # 1. Create a Personal Token on Vercel (Settings → Tokens) and add it as GitHub secret VERCEL_TOKEN
