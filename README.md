@@ -69,7 +69,17 @@ Note for Windows PowerShell: use `copy` as above; on macOS/Linux use `cp`.
 - npm test — run tests (if any)
 
 ## Deploy
-Recommended: Vercel (1-click deploy from GitHub). After deploying, add the Live Demo URL to the top of this README so recruiters can access it directly.
+Recommended: Vercel (1-click deploy from GitHub). You can deploy manually via the Vercel dashboard, or enable automatic deploys using the GitHub Actions workflow included in `.github/workflows/vercel-deploy.yml`.
+
+Automatic deploy with GitHub Actions
+1. Create a Vercel Personal Token: https://vercel.com/account/tokens
+2. In your GitHub repo, go to Settings → Secrets → Actions and add the following secrets:
+  - `VERCEL_TOKEN` — the token from step 1
+  - `VERCEL_ORG_ID` — your Vercel organization ID (from the project settings)
+  - `VERCEL_PROJECT_ID` — your Vercel project ID (from the project settings)
+3. Push to `main` — the workflow `.github/workflows/vercel-deploy.yml` will run and deploy to production.
+
+After the first successful deploy, copy the production URL and replace the Live Demo placeholder badge at the top of this README (the badge currently uses `https://<your-vercel-domain>`).
 
 ## Screenshots / Social Preview
 Place screenshots or screen recordings in the `public/` folder and reference them here. Example placeholders are `public/screenshot.svg` and `public/og-image.svg`.
