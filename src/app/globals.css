@@ -1,0 +1,52 @@
+/* Import Tailwind CSS - Do not remove or modify these lines */
+/* stylelint-disable at-rule-no-unknown */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Project CSS variables (used by Tailwind token mappings in tailwind.config.js) */
+:root {
+  --background: #0D1B2A; /* dark teal */
+  --foreground: #F8F7F4; /* off-white */
+  --border: rgba(212,175,55,0.2); /* gold, low opacity */
+  --input: #102226;
+  --ring: #D4AF37;
+  --primary: #D4AF37;
+  --primary-foreground: #0D1B2A;
+  --secondary: #1E3D34;
+  --secondary-foreground: #F8F7F4;
+  --destructive: #ff4d4f;
+  --destructive-foreground: #ffffff;
+  --accent: #B8941F;
+  --accent-foreground: #0D1B2A;
+  --muted: #94a3b8;
+  --muted-foreground: #e6eef6;
+}
+
+@layer base {
+  * {
+    /* Use CSS variable for default border color to avoid @apply errors for unknown utility */
+    border-color: var(--border);
+  }
+  body {
+    /* Use CSS variables directly to avoid @apply issues with custom tokens */
+    background-color: var(--background);
+    color: var(--foreground);
+    overflow-x: hidden;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0D1B2A;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}

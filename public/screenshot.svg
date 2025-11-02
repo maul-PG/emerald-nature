@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f8fafc"/>
+  <rect x="48" y="48" width="1104" height="704" rx="12" fill="#ffffff" stroke="#e6e6e6"/>
+  <text x="84" y="120" font-family="Inter, system-ui, sans-serif" font-size="28" fill="#0f172a">Emerald Nature — Homepage (placeholder)</text>
+  <rect x="84" y="160" width="480" height="300" rx="8" fill="#e6fffa" stroke="#bbf7d0"/>
+  <rect x="584" y="160" width="480" height="300" rx="8" fill="#f0f9ff" stroke="#bfdbfe"/>
+  <text x="84" y="500" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#334155">Use a real screenshot or GIF here when preparing the portfolio presentation.</text>
+</svg>
