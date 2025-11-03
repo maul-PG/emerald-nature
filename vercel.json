@@ -1,0 +1,19 @@
+{{
+
+  "framework": "nextjs",  "version": 2,
+
+  "buildCommand": "npm run build",  "framework": "nextjs",
+
+  "devCommand": "npm run dev",  "buildCommand": "npm run build:tailwind && npm run build",
+
+  "installCommand": "npm install",  "devCommand": "npm run dev",
+
+  "outputDirectory": ".next"  "installCommand": "npm install",
+
+}  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@vercel/next"
+    }
+  ]
+}
