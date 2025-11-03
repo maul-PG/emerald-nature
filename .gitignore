@@ -40,3 +40,4 @@ coverage/
 
 # Optional: lockfile for pnpm
 .pnpm-debug.log
+.vercel
