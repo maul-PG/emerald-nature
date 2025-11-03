@@ -39,13 +39,21 @@ jobs:
       - name: Build project
         run: npm run build
         
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Build Tailwind
+        run: npm run build:tailwind
+
       - name: Deploy to Vercel
         env:
-          VERCEL_TOKEN: $SyQaRXdho3H4LVDxRcFgLyBn
-          VERCEL_ORG_ID: "team_W1PphBYsnp6V4kzsR0z8sxyD"
-          VERCEL_PROJECT_ID: "prj_5f0BAL3w4lYDvJ7KLPBqxYdxXVCj"
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: team_W1PphBYsnp6V4kzsR0z8sxyD
+          VERCEL_PROJECT_ID: prj_5f0BAL3w4lYDvJ7KLPBqxYdxXVCj
         run: |
-          npx vercel deploy --token ${VERCEL_TOKEN} --prod
+          vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+          vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+          vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
 
 # To use this workflow:
 # 1. Create a Personal Token on Vercel (Settings → Tokens) and add it as GitHub secret VERCEL_TOKEN
