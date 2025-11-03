@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const postcss = require('postcss')
-const tailwindcss = require('@tailwindcss/postcss')
+const tailwindcss = require('tailwindcss')
 const autoprefixer = require('autoprefixer')
 
 const input = path.resolve(__dirname, '../src/app/globals.css')

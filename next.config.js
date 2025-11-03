@@ -7,17 +7,13 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
         port: '',
-        pathname: '/photo-**',
+        pathname: '/**',
       },
     ],
     unoptimized: true
   },
-  output: 'standalone',
   poweredByHeader: false,
-  reactStrictMode: true,
-  experimental: {
-    appDir: true,
-  }
+  reactStrictMode: true
 }
 
 module.exports = nextConfig
