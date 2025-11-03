@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir: '.next',
   images: {
     remotePatterns: [
       {
@@ -14,6 +15,9 @@ const nextConfig = {
   output: 'standalone',
   poweredByHeader: false,
   reactStrictMode: true,
+  experimental: {
+    appDir: true,
+  }
 }
 
 module.exports = nextConfig

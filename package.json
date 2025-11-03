@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build:tailwind": "node ./scripts/build-tailwind.js",
     "export-og": "node ./scripts/export-og.js",
-    "build": "next build",
+    "build": "npm run build:tailwind && next build",
     "start": "next start",
     "lint": "next lint"
   },
