@@ -9,7 +9,11 @@ const nextConfig = {
         pathname: '/photo-**',
       },
     ],
+    unoptimized: true
   },
+  output: 'standalone',
+  poweredByHeader: false,
+  reactStrictMode: true,
 }
 
 module.exports = nextConfig

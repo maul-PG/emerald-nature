@@ -1,19 +1,13 @@
 {
   "version": 2,
   "framework": "nextjs",
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build:tailwind && npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "builds": [
     {
-      "src": "package.json",
+      "src": "next.config.js",
       "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
     }
   ]
 }
