@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   distDir: '.next',
   images: {
     remotePatterns: [
@@ -10,10 +11,16 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    unoptimized: true
+    unoptimized: true,
   },
   poweredByHeader: false,
-  reactStrictMode: true
+  reactStrictMode: true,
+
+  // ⬇️ Tambahkan ini biar Next tahu folder utamamu di src/
+  experimental: {
+    appDir: true,
+  },
+  srcDir: 'src',
 }
 
 module.exports = nextConfig
