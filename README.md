@@ -15,6 +15,13 @@ Repository: https://github.com/maul-PG/emerald-nature
 
 Contact: maulanarafii036@gmail.com
 
+<!-- Badges: build | dependabot | license | live -->
+
+[![CI](https://github.com/maul-PG/emerald-nature/actions/workflows/ci.yml/badge.svg)](https://github.com/maul-PG/emerald-nature/actions)
+[![Dependabot Status](https://img.shields.io/github/dependabot/maul-PG/emerald-nature?label=dependabot)](https://github.com/maul-PG/emerald-nature/security/dependabot)
+[![License](https://img.shields.io/github/license/maul-PG/emerald-nature)](./LICENSE)
+[![Live Demo](https://img.shields.io/website?url=https://<your-vercel-domain>)](https://<your-vercel-domain>)
+
 ## Overview
 Emerald Nature is a showcase project built with Next.js (App Router) and Tailwind CSS. It demonstrates responsive design, reusable components, and a few light visual effects suitable for a modern portfolio website.
 
@@ -46,6 +53,8 @@ This README is optimized for presentation: it includes a short project summary, 
 
   copy .env.example .env.local
 
+Note for Windows PowerShell: use `copy` as above; on macOS/Linux use `cp`.
+
 4. Run development server
 
   npm run dev
@@ -60,11 +69,33 @@ This README is optimized for presentation: it includes a short project summary, 
 - npm test — run tests (if any)
 
 ## Deploy
-Recommended: Vercel (1-click deploy from GitHub). After deploying, add the Live Demo URL to the top of this README so recruiters can access it directly.
+Recommended: Vercel (1-click deploy from GitHub). You can deploy manually via the Vercel dashboard, or enable automatic deploys using the GitHub Actions workflow included in `.github/workflows/vercel-deploy.yml`.
+
+Automatic deploy with GitHub Actions
+1. Create a Vercel Personal Token: https://vercel.com/account/tokens
+2. In your GitHub repo, go to Settings → Secrets → Actions and add the following secrets:
+  - `VERCEL_TOKEN` — the token from step 1
+  - `VERCEL_ORG_ID` — your Vercel organization ID (from the project settings)
+  - `VERCEL_PROJECT_ID` — your Vercel project ID (from the project settings)
+3. Push to `main` — the workflow `.github/workflows/vercel-deploy.yml` will run and deploy to production.
+
+After the first successful deploy, copy the production URL and replace the Live Demo placeholder badge at the top of this README (the badge currently uses `https://<your-vercel-domain>`).
 
 ## Screenshots / Social Preview
 Place screenshots or screen recordings in the `public/` folder and reference them here. Example placeholders are `public/screenshot.svg` and `public/og-image.svg`.
+To replace the placeholders with real images (recommended):
 
+1. Take a screenshot or export a GIF of the site (recommended resolution for hero: 1200×630).
+2. Place the file into `public/` (e.g. `public/screenshot.png` and `public/og-image.png`).
+3. Commit and push. The README preview and social cards will update on GitHub.
+
+If you have the SVG placeholders and want a quick PNG export locally, you can use a tool like ImageMagick (Windows: install via Chocolatey) and run:
+
+```powershell
+magick convert public/og-image.svg -resize 1200x630 public/og-image.png
+```
+
+Or use a browser's "Save as PNG" from devtools when viewing the SVG.
 ## Contributing
 See `CONTRIBUTING.md` for contribution guidelines and code standards.
 
